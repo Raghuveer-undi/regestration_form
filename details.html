@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #c3cfe2, #f5f7fa);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      background: rgba(153, 90, 158, 0.861);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0px 40px rgba(228, 29, 215, 0.2);
+      width: 100%;
+      max-width: 500px;
+      animation: fadeIn 0.5s ease-in-out;
+      border: 4px solid black;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: rgb(20, 47, 184);
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: white;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #f9f9f9;
+    }
+
+    button {
+      padding: 10px;
+      background-color: rgb(196, 198, 67);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Details</h1>
+    <p><span class="label">Name:</span> <span id="name"></span></p>
+    <p><span class="label">USN:</span> <span id="usn"></span></p>
+    <p><span class="label">Email:</span> <span id="email"></span></p>
+    <p><span class="label">Date of Birth:</span> <span id="dob"></span></p>
+    <p><span class="label">Course:</span> <span id="course"></span></p>
+    <p><span class="label">Gender:</span> <span id="gender"></span></p>
+    <p><span class="label">Phone Number:</span> <span id="phone"></span></p>
+    <p><span class="label">Address:</span> <span id="address"></span></p>
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    // Parse query string
+    const params = new URLSearchParams(window.location.search);
+
+    // Display user details
+    document.getElementById('name').textContent = params.get('name');
+    document.getElementById('usn').textContent = params.get('usn');
+    document.getElementById('email').textContent = params.get('email');
+    document.getElementById('dob').textContent = params.get('dob');
+    document.getElementById('course').textContent = params.get('course');
+    document.getElementById('gender').textContent = params.get('gender');
+    document.getElementById('phone').textContent = params.get('phone');
+    document.getElementById('address').textContent = params.get('address');
+
+    // Function to go back to the form
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

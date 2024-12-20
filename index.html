@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      background: rgba(153, 90, 158, 0.861);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0px 40px rgba(228, 29, 215, 0.2);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in-out;
+      border: 4px solid black;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: rgb(20, 47, 184);
+      text-decoration: underline;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: white;
+      display: block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #f9f9f9;
+      transition: border-color 0.3s ease;
+      border: 2px solid rgb(63, 55, 55);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    .dob-container {
+      position: relative;
+    }
+
+    .calendar-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      pointer-events: none;
+    }
+
+    button {
+      padding: 10px;
+      background-color: rgb(196, 198, 67);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Registration Form</h1>
+    <form id="registrationForm" action="submit.php" method="POST">
+
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="usn">USN:</label>
+        <input type="text" id="usn" name="usn" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <div class="dob-container">
+          <input type="date" id="dob" name="dob" required>
+          <i class="fas fa-calendar-alt calendar-icon"></i>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="course">Course:</label>
+        <select id="course" name="course" required>
+          <option value="">Select Course</option>
+          <option value="CS">Computer Science (CS)</option>
+          <option value="EEE">Electrical and Electronics Engineering (EEE)</option>
+          <option value="AIML">Artificial Intelligence and Machine Learning (AIML)</option>
+          <option value="ECE">Electronics and Communication Engineering (ECE)</option>
+          <option value="Civil">Civil Engineering (Civil)</option>
+          <option value="Mechanical">Mechanical Engineering (Mechanical)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form from reloading the page
+
+      // Gather form data
+      const name = document.getElementById('name').value;
+      const usn = document.getElementById('usn').value;
+      const email = document.getElementById('email').value;
+      const dob = document.getElementById('dob').value;
+      const course = document.getElementById('course').value;
+      const gender = document.getElementById('gender').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+
+      // Display success message
+      alert('Registration Successful!');
+
+      // Redirect to new page with user details
+      const userDetails = `name=${encodeURIComponent(name)}&usn=${encodeURIComponent(usn)}&email=${encodeURIComponent(email)}&dob=${encodeURIComponent(dob)}&course=${encodeURIComponent(course)}&gender=${encodeURIComponent(gender)}&phone=${encodeURIComponent(phone)}&address=${encodeURIComponent(address)}`;
+      window.location.href = `details.html?${userDetails}`;
+    });
+  </script>
+</body>
+</html>
